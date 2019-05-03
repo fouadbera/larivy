@@ -53,7 +53,7 @@ class FacebookController extends Controller
             ],
             "message"   => $msg
         ];
-        dd($messageData);
+        
         $ch = curl_init('https://graph.facebook.com/v3.2/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // curl_setopt($ch, CURLOPT_HEADER, false);
