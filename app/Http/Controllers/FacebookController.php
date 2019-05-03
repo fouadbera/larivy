@@ -17,19 +17,40 @@ class FacebookController extends Controller
         $senderMessage=$data["entry"][0]["messaging"][0]["message"];
         if(!empty($senderMessage))
         {
-            $this->sendTextMessage($id,"Hi ");
+            $this->sendTextMessage($id);
         }
     }
 
-    private function sendTextMessage($recipientId, $messageText)
+    private function sendTextMessage($recipientId)
     {
+        $btn_msg = array (
+            'message' => 
+            array (
+              'attachment' => 
+              array (
+                'type' => 'template',
+                'payload' => 
+                array (
+                  'template_type' => 'button',
+                  'text' => 'Need further assistance? Talk to a representative',
+                  'buttons' => 
+                  array (
+                    0 => 
+                    array (
+                      'type' => 'phone_number',
+                      'title' => 'Call Representative',
+                      'payload' => '+212698873204',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        );
         $messageData = [
             "recipient" => [
                 "id" => $recipientId,
             ],
-            "message"   => [
-                "text" => $messageText,
-            ],
+            "message"   => $btn_msg
         ];
         $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -42,6 +63,7 @@ class FacebookController extends Controller
     }
 
 
+    
 
 
 }
