@@ -18,21 +18,22 @@ class FacebookController extends Controller
         if(!empty($senderMessage))
         {
             $this->sendTextMessage($id, 'hi ');
-            $this->sendTextMessage($id, 'hi again');
+            
         }
     }
 
-    private function sendTextMessage($recipientId, $msg)
+    private function sendTextMessage($recipientId, $messageText)
     {
        
         $messageData = [
             "recipient" => [
                 "id" => $recipientId,
             ],
-            "message"   => $msg
+            "message"   => [
+                "text" => $messageText,
+            ],
         ];
-        
-        $ch = curl_init('https://graph.facebook.com/v3.2/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
+        $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
