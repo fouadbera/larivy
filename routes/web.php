@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/test', function () {
-    return'welcome from larivy';
-});
-
+// Route::get('/test', function () {
+//     return 'welcome from larivy';
+// });
+route::get('/facebook','FacebookController@verify')->middleware('verifybot');
+route::post('/facebook','FacebookController@verify');
 Route::get('/{any}', 'singlePageController@index')->where('any', '.*');
