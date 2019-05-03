@@ -17,11 +17,12 @@ class FacebookController extends Controller
         $senderMessage=$data["entry"][0]["messaging"][0]["message"];
         if(!empty($senderMessage))
         {
-            $this->sendTextMessage($id);
+            $this->sendTextMessage($id, 'hi ');
+            $this->sendTextMessage($id, 'hi again');
         }
     }
 
-    private function sendTextMessage($recipientId)
+    private function sendTextMessage($recipientId, $msg)
     {
         $btn_msg = array (
             'message' => 
@@ -50,7 +51,7 @@ class FacebookController extends Controller
             "recipient" => [
                 "id" => $recipientId,
             ],
-            "message"   => $btn_msg
+            "message"   => $msg
         ];
         dd($messageData);
         $ch = curl_init('https://graph.facebook.com/v3.2/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
