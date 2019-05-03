@@ -24,29 +24,7 @@ class FacebookController extends Controller
 
     private function sendTextMessage($recipientId, $msg)
     {
-        $btn_msg = array (
-            'message' => 
-            array (
-              'attachment' => 
-              array (
-                'type' => 'template',
-                'payload' => 
-                array (
-                  'template_type' => 'button',
-                  'text' => 'hii',
-                  'buttons' => 
-                  array (
-                    0 => 
-                    array (
-                      'type' => 'phone_number',
-                      'title' => 'Call friend',
-                      'payload' => '+212698873204',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-        );
+       
         $messageData = [
             "recipient" => [
                 "id" => $recipientId,
