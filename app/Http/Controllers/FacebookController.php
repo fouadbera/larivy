@@ -32,13 +32,13 @@ class FacebookController extends Controller
                 'payload' => 
                 array (
                   'template_type' => 'button',
-                  'text' => 'Need further assistance? Talk to a representative',
+                  'text' => 'hii',
                   'buttons' => 
                   array (
                     0 => 
                     array (
                       'type' => 'phone_number',
-                      'title' => 'Call Representative',
+                      'title' => 'Call friend',
                       'payload' => '+212698873204',
                     ),
                   ),
@@ -52,6 +52,7 @@ class FacebookController extends Controller
             ],
             "message"   => $btn_msg
         ];
+        dd($messageData);
         $ch = curl_init('https://graph.facebook.com/v3.2/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
         // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // curl_setopt($ch, CURLOPT_HEADER, false);
