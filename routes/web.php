@@ -11,7 +11,7 @@
 |
 */
 
- Route::get('/test', function () {
+ Route::get('/tessst', function () {
      return 'welcome from larivy';
  });
 route::get('/facebook','FacebookController@verify')->middleware('verifybot');
