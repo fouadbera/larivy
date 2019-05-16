@@ -11,7 +11,7 @@
 |
 */
 
- Route::get('/fouad', function () {
+ Route::get('/fdouad', function () {
      return 'welcoddme from larivy';
  });
 route::get('/facebook','FacebookController@verify')->middleware('verifybot');
